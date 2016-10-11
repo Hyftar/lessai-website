@@ -1,30 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>L'essai - official website - Timesheets</title>
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
-  <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-</head>
-<body>
-  <div class="mdl-layout mdl-js-layout">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <a href="/">
-          <span class="mdl-layout-title">L'essai</span>
-        </a>
-        <div class="mdl-layout-spacer"></div>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#">Home</a>
-          <a class="mdl-navigation__link" href="#">Time Sheets</a>
-          <a class="mdl-navigation__link" href="#">Forum</a>
-          <a class="mdl-navigation__link" href="#">About</a>
-          <a class="mdl-navigation__link" href="#">Login</a>
-        </nav>
-      </div>
-    </header>
-  </div>
-</body>
-</html>
+{% extends 'timesheet/base.html' %}
+
+{% block content %}
+  {% for timesheet in timesheets %}
+    <div class="timsheet-list-element">
+        <div class="timesheet-author--list">
+          {{ timesheet.user.username }}
+        </div>
+        <a href="{% url 'timesheet_detail' pk=timesheet.pk %}">
+          <div class="timesheet-duration--list">
+            {{ timesheet.duration }}
+          </div>
+        <div class="timesheet-title--list">
+            {{ timesheet.title }}
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+{% endblock %}

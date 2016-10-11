@@ -1,0 +1,18 @@
+{% extends 'timesheet/base.html' %}
+
+{% block content %}
+<div class='timesheet'>
+  <div class="timesheet-title">
+    {{ timesheet.title }}
+  </div>
+  <div class="timesheet-author">
+    created by {{ timesheet.user.username }} on {{ timesheet.creationtime }}
+  </div>
+  <div class="timesheet-duration">
+    Worked for {{ timesheet.PrettyTime }}
+  </div>
+  <div class="timesheet-description">
+    {{ timesheet.description }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>L'essai - official website - Timesheets</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-red.min.css" />
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'/>
+  <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/timesheet.css' %}" />
+</head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <a class="mdl-navigation__link" href="/">
+          <span class="mdl-layout-title">L'essai</span>
+        </a>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'timesheet_list'%}">Time Sheets</a>
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Forum</a>
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">About</a>
+          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Login</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">L'essai</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="{% url 'timesheet_list'%}">Time Sheets</a>
+        <a class="mdl-navigation__link" href="/">Forum</a>
+        <a class="mdl-navigation__link" href="/">About</a>
+        <a class="mdl-navigation__link" href="/">Login</a>
+      </nav>
+    </div>
+    <div class="mdl-layout__content">
+      <div class="content-grid mdl-grid">
+        {% block content %}
+        {% endblock %}
+      </div>
+  </div>
+</div>
+</body>
+</html>
