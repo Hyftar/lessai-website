@@ -9,3 +9,24 @@
     display: none;
   }
 }
+
+.register-form > form * {
+  float: left;
+  clear: both;
+  margin-top: 15px;
+}
+
+.register-form {
+  position: fixed;
+  width: 100%;
+}
+
+.register-form > form {
+  position: relative;
+  width: 30%;
+  margin: 0 auto;
+}
+
+form > .helptext, form > br {
+  display: none;
+}

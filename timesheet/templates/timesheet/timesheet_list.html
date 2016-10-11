@@ -1,6 +1,18 @@
 {% extends 'timesheet/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<div class="timesheet-new">
+  <a href="{% url 'timesheet_new' %}">
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="">
+      <i class="material-icons">add</i>
+    </button>
+  </a>
+  <div class="timesheet-new-text">
+    Create a new timesheet
+  </div>
+</div>
+{% endif %}
   {% for timesheet in timesheets %}
     <div class="timsheet-list-element">
         <div class="timesheet-author--list">

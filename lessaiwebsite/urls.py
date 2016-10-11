@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
 from timesheet import views
+import django.contrib.auth.views
 
 urlpatterns = [
   url(r'^$', views.home),
   url(r'^admin/', admin.site.urls),
-  url(r'^timesheets/', include('timesheet.urls'))
+  url(r'^login/$', django.contrib.auth.views.login, name='login'),
+  url(r'^logout/$', django.contrib.auth.views.logout, name='logout', kwargs={'next_page': '/'}),
+  url(r'^register/$', CreateView.as_view(template_name='registration/register.html', form_class=UserCreationForm, success_url='/'), name='register'),
+  url(r'^account/$', views.account, name='account'),
+  url(r'^timesheets/', include('timesheet.urls')),
 ]

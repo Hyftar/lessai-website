@@ -26,3 +26,17 @@
 .timesheet-duration--list, .timesheet-title--list {
   float: right;
 }
+
+.timesheet-new {
+  width: 100%;
+}
+
+.timesheet-new-text, .timesheet-new > a {
+  float: right;
+}
+
+.timesheet-new-text {
+  line-height: 4;
+  margin-right: 15px;
+  font-size: 1em;
+}

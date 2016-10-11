@@ -15,8 +15,7 @@ class TimeSheet(models.Model):
   def PrettyTime(self):
     time = self.duration.seconds
     out = ''
-    days = int(time / (3600 * 24))
-    time -= days * (3600 * 24)
+    days = int(self.duration.days)
     hours = int(time / 3600)
     time -=  hours * 3600
     minutes = int(time / 60)
