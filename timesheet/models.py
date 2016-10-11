@@ -10,7 +10,7 @@ class TimeSheet(models.Model):
   creationtime = models.DateTimeField(default=timezone.now)
 
   def __str__(self):
-    return "%s worked on %s for %s" % (self.user.username, self.title, self.PretyTime())
+    return "%s worked on %s for %s" % (self.user.username, self.title, self.PrettyTime())
 
   def PrettyTime(self):
     time = self.duration.seconds
