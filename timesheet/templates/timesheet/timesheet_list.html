@@ -15,13 +15,15 @@
 {% endif %}
   {% for timesheet in timesheets %}
     <div class="timsheet-list-element">
+      <a href="{% url 'account' pk=timesheet.user.pk%}">
         <div class="timesheet-author--list">
           {{ timesheet.user.username }}
         </div>
-        <a href="{% url 'timesheet_detail' pk=timesheet.pk %}">
-          <div class="timesheet-duration--list">
-            {{ timesheet.duration }}
-          </div>
+      </a>
+      <a href="{% url 'timesheet_detail' pk=timesheet.pk %}">
+        <div class="timesheet-duration--list">
+          {{ timesheet.duration }}
+        </div>
         <div class="timesheet-title--list">
             {{ timesheet.title }}
         </div>

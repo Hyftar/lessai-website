@@ -26,6 +26,6 @@ urlpatterns = [
   url(r'^login/$', django.contrib.auth.views.login, name='login'),
   url(r'^logout/$', django.contrib.auth.views.logout, name='logout', kwargs={'next_page': '/'}),
   url(r'^register/$', CreateView.as_view(template_name='registration/register.html', form_class=UserCreationForm, success_url='/'), name='register'),
-  url(r'^account/$', views.account, name='account'),
+  url(r'^account/(?P<pk>\d+)/$', views.account, name='account'),
   url(r'^timesheets/', include('timesheet.urls')),
 ]

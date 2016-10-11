@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import TimeSheet
 from .forms import TimeSheetForm
+from django.contrib.auth.models import User
 import django.http
 
 # Create your views here.
@@ -48,7 +49,7 @@ def timesheet_edit(request, pk):
     form = TimeSheetForm(instance=timesheet)
   return render(request, 'timesheet/timesheet_edit.html', {'form': form })
 
-@login_required
-def account(request):
-  timesheets = TimeSheet.objects.filter(user=request.user)
-  return render(request, 'registration/account.html', { 'timesheets': timesheets })
+def account(request, pk):
+  account_user = get_object_or_404(User, pk=pk)
+  timesheets = TimeSheet.objects.filter(user=account_user)
+  return render(request, 'registration/account.html', { 'timesheets': timesheets, 'account_user': account_user })
