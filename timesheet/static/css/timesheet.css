@@ -16,6 +16,7 @@
 
 .timsheet-list-element {
   width: 100%;
+  margin-top: 10px;
 }
 
 .timesheet-author--list {
