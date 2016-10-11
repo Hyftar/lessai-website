@@ -9,16 +9,6 @@ import django.http
 def home(request):
   return render(request, 'timesheet/home.html')
 
-# def register(request):
-#   if request.method == 'POST':
-#       uf = UserForm(request.POST, prefix='user')
-#       if uf.is_valid():
-#         user = uf.save()
-#         return django.http.HttpResponseRedirect('home')
-#   else:
-#       uf = UserForm(prefix='user')
-#   return django.shortcuts.render_to_response('register.html', dict(userform=uf, context_instance=django.template.RequestContext(request)))
-
 def timesheet_list(request):
   timesheets = TimeSheet.objects.order_by('creationtime').reverse()
   return render(request, 'timesheet/timesheet_list.html', {'timesheets': timesheets})
@@ -44,6 +34,8 @@ def timesheet_new(request):
 @login_required
 def timesheet_edit(request, pk):
   timesheet = get_object_or_404(TimeSheet, pk=pk)
+  if (request.user.username != timesheet.user.username and not request.user.is_superuser):
+    return redirect('timesheet_detail', pk=timesheet.pk)
   if request.method == "POST":
     form = TimeSheetForm(request.POST, instance=timesheet)
     if (form.is_valid()):

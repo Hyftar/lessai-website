@@ -1,11 +1,13 @@
 {% extends 'timesheet/base.html' %}
 
 {% block content %}
+{% if user.username == timesheet.user.username or user.is_superuser%}
 <a href="{% url 'timesheet_edit' pk=timesheet.pk %}">
   <button class="mdl-button mdl-js-button mdl-button--primary">
     Edit
   </button>
 </a>
+{% endif %}
 <div class='timesheet'>
   <div class="timesheet-title">
     {{ timesheet.title }}
