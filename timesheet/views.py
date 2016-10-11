@@ -6,7 +6,7 @@ def home(request):
   return render(request, 'timesheet/home.html')
 
 def timesheet_list(request):
-  timesheets = TimeSheet.objects.order_by('creationtime')
+  timesheets = TimeSheet.objects.order_by('creationtime').reverse()
   return render(request, 'timesheet/timesheet_list.html', {'timesheets': timesheets})
 
 def timesheet_detail(request, pk):
