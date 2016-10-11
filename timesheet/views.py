@@ -11,5 +11,4 @@ def timesheet_list(request):
 
 def timesheet_detail(request, pk):
   timesheet = get_object_or_404(TimeSheet, pk=pk)
-  pretty_duration = timesheet.PrettyTime()
-  return render(request, 'timesheet/timesheet_detail.html', {'timesheet': timesheet, 'pretty_duration': pretty_duration})
+  return render(request, 'timesheet/timesheet_detail.html', { 'timesheet': timesheet })
